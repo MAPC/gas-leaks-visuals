@@ -1,0 +1,21 @@
+{
+  "name": "gas_leaks_visuals",
+  "version": "1.0.0",
+  "description": "Visuals for Gas Leaks project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gas_leaks_visuals"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "c3": "^0.4.11",
+    "d3": "^4.2.6",
+    "jquery": "^3.1.1",
+    "materialize-css": "^0.97.7"
+  }
+}
