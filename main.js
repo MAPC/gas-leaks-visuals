@@ -8,7 +8,7 @@ var chart = c3.generate({
     bindto: '#coordination',
     data: {
       x: 'year',
-      // type: 'spline',
+      type: 'spline',
       url: coordination_data(),
       hide: ['savings_5yr']
     },
