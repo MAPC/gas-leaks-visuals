@@ -8,7 +8,8 @@
   <meta name="description" content="Gas Leaks">
   <meta name="author" content="MAPC">
   <!-- Load c3.css -->
-  <link href="c3.min.css" rel="stylesheet" type="text/css">
+  <link href="/node_modules/c3/c3.css" rel="stylesheet" type="text/css">
+  <link href="/node_modules/materialize-css/dist/css/materialize.min.css" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -33,16 +34,40 @@
 </head>
 
 <body>
-  <h1>Coordination Counts</h1>
-  <div id="coordination"></div>
-  Assumptions:
-  <form id="assumptions">
-    <input type="radio" name="radio" value="0.3" checked/> Coordination is possible for 30% of roads <br />
-    <input type="radio" name="radio" value="0.4" /> Coordination is possible for 40% of roads <br />
-    <input type="radio" name="radio" value="0.5" /> Coordination is possible for 50% of roads <br />
-    <input type="radio" name="radio" value="1" /> Coordination is possible for 100% of roads <br />
-  </form>
-  <div id="superemitters"></div>
+  <div class="container">
+    <h1>Coordination Counts</h1>
+    <div id="coordination"></div>
+    <div class="row">
+      <div class="col s6">
+        Assumptions:
+        <form id="assumptions">
+          <p>
+            <input type="radio" name="radio" value="0.3" id="0.3" checked/> 
+            <label for="0.3">Coordination is possible for 30% of roads</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="0.4" id="0.4" /> 
+            <label for="0.4">Coordination is possible for 40% of roads</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="0.5" id="0.5" /> 
+            <label for="0.5">Coordination is possible for 50% of roads</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="1" id="1" /> 
+            <label for="1">Coordination is possible for 100% of roads</label>
+          </p>
+        </form>
+      </div>
+      <div class="col s6">
+        <h3>Total Saved:</h3>
+        <h3 id="total-saved"></h3>
+        
+      </div>
+    </div>
+
+    <div id="superemitters"></div>
+  </div>
   <!-- Load d3.js and c3.js -->
   <script src="jquery.min.js" charset="utf-8"></script>
   <script src="d3.min.js" charset="utf-8"></script>
