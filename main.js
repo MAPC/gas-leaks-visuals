@@ -46,14 +46,23 @@ var chart = c3.generate({
       // var path = d3.select('.c3-area-With-Coordination');
       //     path.attr('style', 'fill: rgb(255, 255, 255); opacity: 1');
       // animate line
-      var path = d3.selectAll('.c3-line'); 
-          var totalLength = path.node().getTotalLength(); 
-          path.attr("stroke-dasharray", totalLength + " " + totalLength) 
-                  .attr("stroke-dashoffset", totalLength).attr("stroke", "steelblue") 
-                  .transition() 
-                  .duration(1800) 
-                  .ease("linear") 
-                  .attr("stroke-dashoffset", 0);
+      if (!this.renderedOnce) {
+        var path = d3.selectAll('.c3-line'); 
+        var totalLength = path.node().getTotalLength(); 
+        path.attr("stroke-dasharray", totalLength + " " + totalLength) 
+                .attr("stroke-dashoffset", totalLength)
+                .transition() 
+                .duration(2300) 
+                .ease("linear") 
+                .attr("stroke-dashoffset", 0);
+      } else {
+        var path = d3.selectAll('.c3-line'); 
+        var totalLength = path.node().getTotalLength(); 
+        path.attr("stroke-dasharray", totalLength + " " + totalLength) 
+                .attr("stroke-dashoffset", totalLength)
+                .attr("stroke-dashoffset", 0);
+      }
+      this.renderedOnce = true;
 
     }
 });
