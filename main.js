@@ -67,7 +67,7 @@ var chart = c3.generate({
         path.attr("stroke-dasharray", totalLength + " " + totalLength) 
                 .attr("stroke-dashoffset", totalLength)
                 .transition() 
-                .duration(2300) 
+                .duration(2000) 
                 .ease("linear") 
                 .attr("stroke-dashoffset", 0);
       } else {
