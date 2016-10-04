@@ -22,6 +22,10 @@ var chart = c3.generate({
     },
     axis: {
       x: {
+        label: {
+          text: "Year",
+          position: "outer-center"
+        },
         type: 'timeseries',
         tick: {
           format: '%Y',
@@ -29,6 +33,10 @@ var chart = c3.generate({
         }
       },
       y: {
+        label: {
+          text: "Annual Cost",
+          position: "outer-middle"
+        },
         tick: {
           format: function(d) {
             return "$" + d3.format('s')(d);
@@ -79,7 +87,6 @@ var chart = c3.generate({
       }
       this.renderedOnce = true;
 
-      // d3.select('.c3-lines-With-Coordination').moveToFront();  
     }
 });
 
@@ -113,14 +120,65 @@ $('#assumptions input').on('change', function() {
 
 })
 
-// var emitter_data = ""
+var emitter_data = "https://mapc-admin.carto.com/api/v2/sql?q=SELECT%20extentareanum,%20count(extentareanum)%20FROM%20%22mapc-admin%22.final_survey_carto%20GROUP%20BY%20extentareanum%20ORDER%20BY%20extentareanum&format=csv"
 
-// var chart = c3.generate({
-//     bindto: '#coordination',
-//     data: {
-//       // x: 'year',
-//       // type: 'spline',
-//       url: emitter_data
-//     }
-// });
+var emitters = c3.generate({
+    bindto: '#superemitters',
+    data: {
+      x: 'extentareanum',
+      y: 'count',
+      url: emitter_data,
+      type: "scatter",
+      color: function (color, d) { 
+        if (d.x >= 1000) {
+          return "#e2543d"
+        } else {
+          return color;  
+        }
+        
+      }
+    },
+    legend: {
+      hide: true
+    },
+    point: {
+      r: function(d) {
+        return d3.scale.sqrt()
+          .domain([0, 5000])
+          .range([0, 35])
+            (d.x);
+      }
+    },
+    axis: {
+      x: {
+        label: {
+          text: "Leak Extent",
+          position: "outer-center"
+        },
+        padding: {
+          left: 0,
+          right: 750,
+        },
+        tick: {
+          fit: false
+        }
+      },
+      y: {
+        label: {
+          text: "Count of Leaks",
+          position: "outer-middle"
+        }
+      }
+    },
+    regions: [
+      { axis: 'x', start: 1000, class: 'superemitters', opacity: 0.2 }
+    ],
+    grid: {
+      x: {
+        lines: [
+            {value: 1000, text: 'Super-Emitters', position: 'end', "class": 'label-super-emitters'}
+        ] 
+      }
+    }
+});
 

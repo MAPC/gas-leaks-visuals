@@ -28,7 +28,7 @@
       font: 0.8em sans-serif;
     }
 
-    .c3-circle {
+    #coordination .c3-circle {
       r: 5;
     }
 
@@ -38,29 +38,27 @@
       opacity: 0.8;
     }
 
-/*    .c3-area-With-Coordination {
-      fill: white !important;
-      opacity: 1 !important;
-    }*/
-
-/*    .c3-area-Status-Quo {
-      fill: #63afaa !important;
-      opacity: 0.6 !important;
+    .c3-region.superemitters {
+      shape-rendering: crispEdges;
+      fill: url(#MyGradient);
     }
-*/
-    /*.c3-line-With-Coordination {
-      z-index: 9999;
-    }*/
+
+    #superemitters .c3-circle {
+      stroke: white;
+      stroke-width: 2px;
+      stroke-opacity: 1;
+    }
 
     .c3 .c3-axis path, .c3 .c3-axis line, .c3 .c3-axis text {
       opacity: 0.6 !important;
     }
+
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Coordination Saves Moneys</h1>
+    <h2>Coordination Saves Money</h2>
     <div class="row">
       <div class="col s8">
         <div id="coordination"></div>
@@ -91,13 +89,25 @@
       </div>
     </div>
 
-    <div id="superemitters"></div>
+    <div class="row">
+      <h2>Few "super-emitters" leak the most</h2>
+      <div id="superemitters"></div>
+    </div>
   </div>
   <!-- Load d3.js and c3.js -->
   <script src="node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
   <script src="node_modules/c3/node_modules/d3/d3.min.js" charset="utf-8"></script>
   <script src="node_modules/c3/c3.js"></script>
+  <script src="source/swoopydrag.js"></script>
   <script src="main.js"></script>
+  <svg width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="MyGradient">
+            <stop offset="0" stop-color="#eb955b" />
+            <stop offset="100%" stop-color="#e2543d" />
+          </linearGradient>
+        </defs>
+      </svg>
 </body>
 </html>
 
