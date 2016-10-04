@@ -5,7 +5,6 @@ d3.selection.prototype.moveToFront = function() {
   });
 };
 
-
 // start
 var assumption = 0.3;
 var cost = 202500;  
@@ -57,15 +56,23 @@ var chart = c3.generate({
       
       // hack area spline
       // animate line
-      console.log(this.data);
       var path = d3.selectAll('.c3-line'); 
-          var totalLength = path.node().getTotalLength(); 
-          path.attr("stroke-dasharray", totalLength + " " + totalLength) 
-                  .attr("stroke-dashoffset", totalLength).attr("stroke", "steelblue") 
-                  .transition() 
-                  .duration(1800) 
-                  .ease("linear") 
-                  .attr("stroke-dashoffset", 0);
+      var totalLength = path.node().getTotalLength(); 
+      path.attr("stroke-dasharray", totalLength + " " + totalLength) 
+              .attr("stroke-dashoffset", totalLength).attr("stroke", "steelblue") 
+              .transition() 
+              .duration(1800) 
+              .ease("linear") 
+              .attr("stroke-dashoffset", 0);
+
+      // var path = d3.selectAll('.c3-area'); 
+      // // var totalLength = path.node().getTotalLength(); 
+      // // path.attr("stroke-dasharray", totalLength + " " + totalLength) 
+      // //         .attr("stroke-dashoffset", totalLength).attr("stroke", "steelblue") 
+      // //         .transition() 
+      // //         .duration(1800) 
+      // //         .ease("linear") 
+      // //         .attr("stroke-dashoffset", 0);
 
       d3.select('.c3-lines-With-Coordination').moveToFront();  
     }
