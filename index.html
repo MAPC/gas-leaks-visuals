@@ -8,7 +8,9 @@
   <meta name="description" content="Gas Leaks">
   <meta name="author" content="MAPC">
   <!-- Load c3.css -->
-  <link href="/source/c3.min.css" rel="stylesheet" type="text/css">
+  <link href="node_modules/c3/c3.css" rel="stylesheet" type="text/css">
+  <link href="node_modules/materialize-css/dist/css/materialize.min.css" rel="stylesheet" type="text/css">
+
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -29,24 +31,72 @@
     .c3-circle {
       r: 5;
     }
+
+    .c3-grid line{
+      stroke-dasharray: none;
+      stroke-width: 0.5px;
+      opacity: 0.8;
+    }
+
+/*    .c3-area-With-Coordination {
+      fill: white !important;
+      opacity: 1 !important;
+    }*/
+
+/*    .c3-area-Status-Quo {
+      fill: #63afaa !important;
+      opacity: 0.6 !important;
+    }
+*/
+    /*.c3-line-With-Coordination {
+      z-index: 9999;
+    }*/
+
+    .c3 .c3-axis path, .c3 .c3-axis line, .c3 .c3-axis text {
+      opacity: 0.6 !important;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Coordination Counts</h1>
-  <div id="coordination"></div>
-  Assumptions:
-  <form id="assumptions">
-    <input type="radio" name="radio" value="0.3" checked/> Coordination is possible for 30% of roads <br />
-    <input type="radio" name="radio" value="0.4" /> Coordination is possible for 40% of roads <br />
-    <input type="radio" name="radio" value="0.5" /> Coordination is possible for 50% of roads <br />
-    <input type="radio" name="radio" value="1" /> Coordination is possible for 100% of roads <br />
-  </form>
-  <div id="superemitters"></div>
+  <div class="container">
+    <h1>Coordination Saves Moneys</h1>
+    <div class="row">
+      <div class="col s8">
+        <div id="coordination"></div>
+      </div>
+      <div class="col s4">
+        Assumptions:
+        <form id="assumptions">
+          <p>
+            <input type="radio" name="radio" value="0.3" id="0.3" checked/> 
+            <label for="0.3">30% of roads coordinated</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="0.4" id="0.4" /> 
+            <label for="0.4">40% of roads coordinated</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="0.5" id="0.5" /> 
+            <label for="0.5">50% of roads coordinated</label>
+          </p>
+          <p>
+            <input type="radio" name="radio" value="1" id="1" /> 
+            <label for="1">100% of roads coordinated</label>
+          </p>
+        </form>
+        <h3>Total Saved:</h3>
+        <h3 id="total-saved" style="color: #63afaa"></h3>
+        <p>Over 15 years</p>
+      </div>
+    </div>
+
+    <div id="superemitters"></div>
+  </div>
   <!-- Load d3.js and c3.js -->
-  <script src="/source/jquery.min.js" charset="utf-8"></script>
-  <script src="/source/d3.min.js" charset="utf-8"></script>
-  <script src="/source/c3.min..js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  <script src="node_modules/c3/node_modules/d3/d3.min.js" charset="utf-8"></script>
+  <script src="node_modules/c3/c3.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
