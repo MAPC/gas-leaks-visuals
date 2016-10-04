@@ -91,6 +91,7 @@ var chart = c3.generate({
 });
 
 function load_total() {
+  var that = this;
   var savings = chart.data().filter(function(el) {
     return el.id == "savings_5yr";
   })[0];
@@ -101,9 +102,19 @@ function load_total() {
 
   d3.select('#total-saved')
     .transition()
-    .duration(2000)
-    .tween("text", function(d) {
-      var i = d3.interpolate(0, total);
+    .duration(1800)
+    .tween("text", function() {
+      var start;
+      if (!that.oldValue) {
+        start = 0;
+        that.oldValue = total;
+      } else {
+        start = that.oldValue;
+        that.oldValue = total;
+      }
+
+      var i = d3.interpolate(start, total);  
+
       return function(t) {
         d3.select(this).text("$" + d3.format('.2s')(i(t)));
       };
