@@ -16,7 +16,7 @@ var chart = c3.generate({
     bindto: '#coordination',
     data: {
       x: 'year',
-      type: 'area-spline',
+      type: 'spline',
       url: coordination_data(),
       hide: ['savings_5yr']
     },
@@ -37,9 +37,8 @@ var chart = c3.generate({
       }
     },
     legend: {
-      position: 'inset',
       inset: {
-        anchor: 'top-right'
+        anchor: 'bottom-right'
       },
       hide: 'savings_5yr'
     },
@@ -64,15 +63,6 @@ var chart = c3.generate({
               .duration(1800) 
               .ease("linear") 
               .attr("stroke-dashoffset", 0);
-
-      // var path = d3.selectAll('.c3-area'); 
-      // // var totalLength = path.node().getTotalLength(); 
-      // // path.attr("stroke-dasharray", totalLength + " " + totalLength) 
-      // //         .attr("stroke-dashoffset", totalLength).attr("stroke", "steelblue") 
-      // //         .transition() 
-      // //         .duration(1800) 
-      // //         .ease("linear") 
-      // //         .attr("stroke-dashoffset", 0);
 
       d3.select('.c3-lines-With-Coordination').moveToFront();  
     }
