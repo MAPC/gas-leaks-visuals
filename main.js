@@ -36,11 +36,16 @@ var chart = c3.generate({
         }
       }
     },
-    legend: {
-      inset: {
-        anchor: 'bottom-right'
+    grid: {
+      x: {
+        show: true 
       },
-      hide: 'savings_5yr'
+      y: {
+        show: true
+      }
+    },
+    legend: {
+      hide: true
     },
     tooltip: {
       format: {
@@ -64,7 +69,7 @@ var chart = c3.generate({
               .ease("linear") 
               .attr("stroke-dashoffset", 0);
 
-      d3.select('.c3-lines-With-Coordination').moveToFront();  
+      // d3.select('.c3-lines-With-Coordination').moveToFront();  
     }
 });
 
