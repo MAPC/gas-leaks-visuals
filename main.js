@@ -1,3 +1,12 @@
+// utils
+d3.selection.prototype.moveToFront = function() {  
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
+
+
+// start
 var assumption = 0.3;
 var cost = 202500;  
 function coordination_data() {
@@ -8,7 +17,7 @@ var chart = c3.generate({
     bindto: '#coordination',
     data: {
       x: 'year',
-      type: 'spline',
+      type: 'area-spline',
       url: coordination_data(),
       hide: ['savings_5yr']
     },
@@ -58,6 +67,7 @@ var chart = c3.generate({
                   .ease("linear") 
                   .attr("stroke-dashoffset", 0);
 
+      d3.select('.c3-lines-With-Coordination').moveToFront();  
     }
 });
 
@@ -79,7 +89,6 @@ function load_total() {
         d3.select(this).text("$" + d3.format('.2s')(i(t)));
       };
     });
-    // .text(total);
 }
 
 $('#assumptions input').on('change', function() {
