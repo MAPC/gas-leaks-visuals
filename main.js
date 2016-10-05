@@ -193,3 +193,23 @@ var emitters = c3.generate({
     }
 });
 
+var superemitter_data_bar = 'https://mapc-admin.carto.com/api/v2/sql?q=SELECT%20COUNT(cartodb_id)%20AS%20%22Count%22%2C%20SUM(extentareanum)%20AS%20%22Extent%20Area%22%2C%20case%20when%20extentareanum%20%3E%3D%201000%20THEN%20%27superemitter%27%20ELSE%20%27regular%27%20END%20AS%20status_type%20FROM%20%22mapc-admin%22.final_survey_carto%20GROUP%20BY%20status_type&format=csv';
+
+var emitters = c3.generate({
+  bindto: '#superemitters2',
+  data: {
+    url: superemitter_data_bar,
+    type: "stackedbar",
+    xs: ['Count', 'Extent Area']
+    // axes: {
+    //     'Count': 'y',
+    //     'Extent Area': 'y2'
+    // }
+  },
+  axis: {
+        x: {
+          type: 'category'
+        }
+    }
+});
+
